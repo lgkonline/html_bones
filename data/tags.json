@@ -1,0 +1,37 @@
+[
+	{
+		"title": "Meta",
+		"id": "meta",
+		"color": "blue",
+		"tags": [
+			{
+				"id": "hb-utf-8",
+				"title": "UTF-8",
+				"html": "&lt;meta charset=\"UTF-8\" data-id=\"hb-utf-8\"&gt;",
+				"section": "head",
+				"position": 1
+			},
+			{
+				"id": "hb-latest-ie",
+				"title": "Latest IE",
+				"html": "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" data-id=\"hb-latest-ie\">",
+				"section": "head",
+				"position": 2
+			}
+		]
+	},
+	{
+		"title": "JavaScript",
+		"id": "javascript",
+		"color": "orange",
+		"tags": [
+			{
+				"id": "hb-jquery",
+				"title": "jQuery",
+				"html": "<script src=\"//code.jquery.com/jquery-1.11.0.min.js\" data-id=\"hb-jquery\"></script>",
+				"section": "body",
+				"position": 1
+			}			
+		]
+	}
+]

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"> 
+		
+		<link rel="stylesheet" href="./lib/materialize/css/materialize.min.css">
+		<link rel="stylesheet" href="./style/main.css">
+	</head>
+
+	<body>
+	
+		<main>
+			<div id="sidebar" class="side-nav fixed">
+				<ul id="tag-menu" class="collection">					
+				</ul>			
+			</div>
+
+			<nav>
+				<div class="nav-wrapper indigo darken-2">
+					<a href="#" class="brand-logo center">&lt;html_bones&gt;</a>
+
+					<ul class="left hide-on-large-only">
+						<li>
+							<a href="javascript:void(0);" data-activates="sidebar" class="toggle-sidebar">
+								<i class="large mdi-navigation-menu"></i>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+			
+			<pre id="code" class="prettyprint lang-html"></pre>
+
+			<div class="container center-align">
+				<button type="button" class="btn waves-light waves-effect indigo">
+					<i class="mdi-content-undo left"></i>
+					Reset
+				</button>			
+			
+				<button type="button" class="btn waves-light waves-effect indigo">
+					<i class="mdi-content-select-all left"></i>
+					Select the code
+				</button>			
+			
+				<button type="button" class="btn waves-light waves-effect indigo">
+					<i class="mdi-content-save left"></i>
+					Save as a cookie
+				</button>
+			</div>
+		</main>
+			
+		<iframe id="code-dom" class="hide"><!DOCTYPE html>
+<html>
+	<head>
+	</head>
+
+	<body>
+	</body>
+</html>							
+		</iframe>		
+		
+		<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="./lib/outerHTML/outerHTML-2.1.0-min.js"></script>
+		<script type="text/javascript" src="./lib/prettyprint/prettify.js"></script>
+		<script type="text/javascript" src="./lib/materialize/js/materialize.min.js"></script>
+		<script src="./script/main.js"></script>
+	</body>
+</html>
