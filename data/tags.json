@@ -1,8 +1,8 @@
 [
 	{
 		"title": "Meta",
-		"id": "meta",
-		"color": "blue",
+		"id": "hb-meta",
+		"color": "green",
 		"tags": [
 			{
 				"id": "hb-utf-8",
@@ -22,7 +22,7 @@
 	},
 	{
 		"title": "JavaScript",
-		"id": "javascript",
+		"id": "hb-javascript",
 		"color": "orange",
 		"tags": [
 			{
@@ -32,6 +32,20 @@
 				"section": "body",
 				"position": 1
 			}			
+		]
+	},
+	{
+		"title": "CSS",
+		"id": "hb-css",
+		"color": "blue",
+		"tags": [
+			{
+				"id": "hb-font-awesome",
+				"title": "Font Awesome",
+				"html": "<link rel=\"stylesheet\" href=\"//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css\">",
+				"section": "head",
+				"position": 4
+			}
 		]
 	}
 ]

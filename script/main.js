@@ -1,7 +1,20 @@
-var headStartTag;
-var headEndTag;	
-var bodyStartTag;
-var bodyEndTag;
+jQuery.fn.selectText = function(){
+    var doc = document
+        , element = this[0]
+        , range, selection
+    ;
+    if (doc.body.createTextRange) {
+        range = document.body.createTextRange();
+        range.moveToElementText(element);
+        range.select();
+    } else if (window.getSelection) {
+        selection = window.getSelection();        
+        range = document.createRange();
+        range.selectNodeContents(element);
+        selection.removeAllRanges();
+        selection.addRange(range);
+    }
+};
 
 function encodeHtml(html) {
 	var output = html;
@@ -93,6 +106,16 @@ function reInitCode() {
 
 $(document).ready(function() {
 	$(".toggle-sidebar").sideNav();
+	
+	$("#btn-select-code").click(function() {
+		$("#code").selectText();	
+	});
+	
+	$("#code").dblclick(function() {
+		$(this).selectText();	
+	});
+	
+	$(".version").text($("html").data("version"));
 	
 	initCode(encodeHtml($("#code-dom").html()));
 });

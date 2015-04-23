@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html data-appname="<html_bones>" data-version="2.0" data-lastupdate="2015-04-23">
 	<head>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"> 
 		
+		<title>&lt;html_bones&gt;</title>
+		
 		<link rel="stylesheet" href="./lib/materialize/css/materialize.min.css">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="./style/main.css">
 	</head>
 
@@ -16,15 +19,34 @@
 				<ul id="tag-menu" class="collection">					
 				</ul>			
 			</div>
+					
+			<ul id="lgk-dropdown" class="dropdown-content">
+				<li><a href="http://blog.lgk.io">LGK Blog</a></li>
+				<li><a href="http://service.lgk.io">LGK Services</a></li>
+			</ul>
 
 			<nav>
-				<div class="nav-wrapper indigo darken-2">
+				<div class="nav-wrapper light-blue">
 					<a href="#" class="brand-logo center">&lt;html_bones&gt;</a>
 
 					<ul class="left hide-on-large-only">
 						<li>
-							<a href="javascript:void(0);" data-activates="sidebar" class="toggle-sidebar">
+							<a href="#!" data-activates="sidebar" class="toggle-sidebar">
 								<i class="large mdi-navigation-menu"></i>
+							</a>
+						</li>
+					</ul>
+					
+					<ul class="right">
+						<li>
+							<a href="http://twitter.com/lgkonline" target="_blank" class="tooltipped" data-tooltip="@lgkonline" data-position="left">
+								<i class="fa fa-twitter"></i>
+							</a>
+						</li>
+						
+						<li>
+							<a class="dropdown-button" href="#!" data-activates="lgk-dropdown">
+								<i class="mdi-social-mood"></i>
 							</a>
 						</li>
 					</ul>
@@ -34,20 +56,24 @@
 			<pre id="code" class="prettyprint lang-html"></pre>
 
 			<div class="container center-align">
-				<button type="button" class="btn waves-light waves-effect indigo">
+				<button type="button" class="btn waves-light waves-effect light-blue">
 					<i class="mdi-content-undo left"></i>
 					Reset
 				</button>			
 			
-				<button type="button" class="btn waves-light waves-effect indigo">
+				<button id="btn-select-code" type="button" class="btn waves-light waves-effect light-blue">
 					<i class="mdi-content-select-all left"></i>
 					Select the code
 				</button>			
 			
-				<button type="button" class="btn waves-light waves-effect indigo">
+				<button type="button" class="btn waves-light waves-effect light-blue">
 					<i class="mdi-content-save left"></i>
 					Save as a cookie
 				</button>
+				
+				<p class="grey-text">
+					<span>&copy; 2015 LGK</span> - Version <span class="version"></span>
+				</p>
 			</div>
 		</main>
 			
@@ -58,8 +84,7 @@
 
 	<body>
 	</body>
-</html>							
-		</iframe>		
+</html></iframe>		
 		
 		<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 		<script type="text/javascript" src="./lib/outerHTML/outerHTML-2.1.0-min.js"></script>
