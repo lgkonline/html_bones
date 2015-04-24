@@ -2,6 +2,10 @@
 <html data-appname="<html_bones>" data-version="2.0" data-lastupdate="2015-04-23">
 	<head>
 		<meta charset="UTF-8">
+        <meta name="author" content="Lars Kliesing - services.lgkonline.com" />
+        <meta name="robots" content="index,follow" />  
+        <meta name="description" content="Presents a basic HTML structure. With one click you can add your favorite framework.">
+        <meta name="keywords" content="HTML,bones,structure,grid,template,frameworks">		
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"> 
 		
@@ -17,17 +21,30 @@
 		<main>
 			<div id="sidebar" class="side-nav fixed">
 				<ul id="tag-menu" class="collection">					
-				</ul>			
+				</ul>	
+				
+				<div class="divider"></div>
+				
+				<p class="center-align">			
+				
+					<a href="http://about.lgkonline.com/kontakt" target="_blank" id="toggle-suggest-modal" 
+					class="btn-floating btn-large waves-effect waves-light red tooltipped modal-trigger" data-position="right" data-tooltip="Suggest an element">
+						<i class="mdi-content-add"></i>
+					</a>
+				</p>
 			</div>
 					
 			<ul id="lgk-dropdown" class="dropdown-content">
-				<li><a href="http://blog.lgk.io">LGK Blog</a></li>
-				<li><a href="http://service.lgk.io">LGK Services</a></li>
+				<li><a href="http://startmon.lgk.io" target="_blank">Startmon</a></li>
+				<li><a href="http://colorganize.com" target="_blank">colorganize.com</a></li>
+				<li class="divider"></li>
+				<li><a href="http://blog.lgk.io" target="_blank">LGK Blog</a></li>
+				<li><a href="http://service.lgk.io" target="_blank">LGK Services</a></li>
 			</ul>
 
 			<nav>
 				<div class="nav-wrapper light-blue">
-					<a href="#" class="brand-logo center">&lt;html_bones&gt;</a>
+					<span class="brand-logo center">&lt;html_bones&gt;</span>
 
 					<ul class="left hide-on-large-only">
 						<li>
@@ -56,17 +73,17 @@
 			<pre id="code" class="prettyprint lang-html"></pre>
 
 			<div class="container center-align">
-				<button type="button" class="btn waves-light waves-effect light-blue">
+				<button id="btn-reset-code" type="button" class="hb-btn btn waves-light waves-effect light-blue">
 					<i class="mdi-content-undo left"></i>
 					Reset
 				</button>			
 			
-				<button id="btn-select-code" type="button" class="btn waves-light waves-effect light-blue">
+				<button id="btn-select-code" type="button" class="hb-btn btn waves-light waves-effect light-blue">
 					<i class="mdi-content-select-all left"></i>
 					Select the code
-				</button>			
+				</button>				
 			
-				<button type="button" class="btn waves-light waves-effect light-blue">
+				<button id="btn-save-as-cookie" type="button" class="hb-btn btn waves-light waves-effect light-blue">
 					<i class="mdi-content-save left"></i>
 					Save as a cookie
 				</button>
@@ -75,7 +92,7 @@
 					<span>&copy; 2015 LGK</span> - Version <span class="version"></span>
 				</p>
 			</div>
-		</main>
+		</main>		
 			
 		<iframe id="code-dom" class="hide"><!DOCTYPE html>
 <html>
@@ -86,10 +103,11 @@
 	</body>
 </html></iframe>		
 		
+		<script src="lib/zeroclipboard/ZeroClipboard.min.js"></script>
 		<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-		<script type="text/javascript" src="./lib/outerHTML/outerHTML-2.1.0-min.js"></script>
+		<script src="lib/jquery/jquery.cookie.min.js"></script>
 		<script type="text/javascript" src="./lib/prettyprint/prettify.js"></script>
 		<script type="text/javascript" src="./lib/materialize/js/materialize.min.js"></script>
-		<script src="./script/main.js"></script>
+		<script src="./script/main.min.js"></script>
 	</body>
 </html>

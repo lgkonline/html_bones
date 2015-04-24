@@ -16,6 +16,32 @@ jQuery.fn.selectText = function(){
     }
 };
 
+var globalData;
+
+function getTagsDataById(id, gettingValue) {
+	var section;
+	var position;
+	
+	$.each(globalData, function(areaKey, areaValue) {
+		$.each(areaValue.tags, function(key, value) {
+			// tags array
+			if (value.id === id) {
+				// Treffer
+				section = value.section;
+				position = value.position;
+			}	
+		});
+	});	
+	
+	if (gettingValue === "section") {
+		return section;
+	}
+	
+	if (gettingValue === "position") {
+		return position;
+	}
+}
+
 function encodeHtml(html) {
 	var output = html;
 	output = output.replace(/</g, "&lt;");
@@ -30,10 +56,91 @@ function decodeHtml(html) {
 	return output;
 }
 
+function insertDataIdInHtml(html, id) {
+	var htmlSplitted = html.split(" ");
+	if (htmlSplitted.length === 1) {
+		// Wenn Tag keine Attribute enthaelt
+		var otherSplitted = html.split(">");
+		otherSplitted[0] += " data-id=\"" + id + "\"";
+		return otherSplitted.join(">");
+	}
+	else {
+		htmlSplitted.splice(1, 0, "data-id=\"" + id + "\"");
+	}
+	if (htmlSplitted[0] === "<script") {
+		// Scripts werden durch MIME-Aenderung unbrauchbar gemacht
+		htmlSplitted.splice(1, 0, "type=\"application/json\"");
+	}
+	var htmlUnited = htmlSplitted.join(" ");
+	return htmlUnited;
+}
+
+function removeDataIdInHtml(html) {
+	var htmlSplitted = html.split(" ");
+	if (htmlSplitted.length === 2) {
+		// Wenn Tag keine Attribute enthaelt
+		var otherSplitted = htmlSplitted[1].split(">");
+		otherSplitted.splice(0, 1);
+		htmlSplitted[1] = otherSplitted.join(">");
+		return htmlSplitted.join(">");
+	}
+	else {
+		htmlSplitted.splice(1, 1);
+	}
+	
+	if (htmlSplitted[0] === "<script") {
+		// MIME-Aenderung wieder entfernen
+		htmlSplitted.splice(1, 1);
+	}
+	var htmlUnited = htmlSplitted.join(" ");
+	return htmlUnited;
+}
+
+function findPreviousTagsElement(id, section) {
+	var position = getTagsDataById(id, "position");
+	var elementsInThisSection = new Array();
+	
+	$("#code-dom").contents().find(section).children().each(function() {
+		var thisId = $(this).data("id");
+		var thisPosition = getTagsDataById(thisId, "position");
+		
+		var infoAboutThis = {
+			id: thisId,
+			position: thisPosition
+		};
+		
+		elementsInThisSection.push(infoAboutThis);
+	});
+	
+	var withSmallerPosition = new Array();
+	for (var i = 0; i < elementsInThisSection.length; i++) {
+		if (elementsInThisSection[i].position < position) {
+			withSmallerPosition.push(elementsInThisSection[i]);
+		}
+	}
+	
+	var highestPosition = 0;
+	var previousElement;
+	for (var i = 0; i < withSmallerPosition.length; i++) {
+		if (elementsInThisSection[i].position > highestPosition) {
+			highestPosition = elementsInThisSection[i].position;
+			previousElement = elementsInThisSection[i];
+		}
+	}
+	
+	if (typeof previousElement !== "undefined") {
+		return previousElement.id;	
+	}
+	else {
+		return false;	
+	}
+}
+
 $.ajax({
 	url: "./data/tags.json",
 	dataType: "json",
 	success: function(data) {
+		globalData = data;
 		$.each(data, function(key, value) {
 			var cardId = value.id;
 			
@@ -45,13 +152,15 @@ $.ajax({
 			);	
 			
 			$.each(value.tags, function(key, value) {
-				var html = encodeHtml(value.html);
+				// HTML wird auseinander und wieder zusammengesetzt um data-id zu setzen
+				var html = encodeHtml(insertDataIdInHtml(value.html, value.id));
+				
 				$("#" + cardId + " .tag-form").append(
 					"<p>" +
 						"<input class='tag-checkbox' id='" + value.id + "' type='checkbox' data-html='" + html + "'>" +
 						"<label for='" + value.id + "'>" + value.title + "</label>" +
 					"</p>"
-				);
+				);			
 			});		
 		});
 			
@@ -60,17 +169,32 @@ $.ajax({
 			var id = $(this).attr("id");
 
 			if ($(this).is(":checked")) {
-				$("#code-dom").contents().find("head").append(html);
+				var section = getTagsDataById(id, "section");
+				var elementBeforeThis = findPreviousTagsElement(id, section);
+				
+				if (elementBeforeThis !== false) {
+					$("#code-dom").contents().find(section).find("*[data-id='" + elementBeforeThis + "']").after(html);
+				}
+				else {
+					$("#code-dom").contents().find(section).prepend(html);
+				}
+				
 				reInitCode();
 			}
 			else {
 				$("#code-dom").contents().find("*[data-id='" + id + "'").remove();
 				reInitCode();
 			}
-		});			
+		});	
+		
+		if ($.cookie("html_bones")) {
+			var ids = $.cookie("html_bones_ids").split(",");
+			for (var i = 0; i < ids.length; i++) {
+				$("#" + ids[i]).prop("checked", true);
+			}
+		}		
 	}
 });
-//prettyPrint();
 
 function initCode(contents) {
 	$("#code").html(contents);
@@ -83,15 +207,17 @@ function reInitCode() {
 	var outputHtml = "";
 	
 	dom.children().each(function() {
-		// inner head/body
-		console.log($(this));
-		outputHtml += "<br>	" + encodeHtml("<" + $(this).context.localName + ">");
-		$(this).children().each(function() {
-			outputHtml += "<br>		" + encodeHtml($(this).outerHTML());
-		});
-		outputHtml += "<br>	" + encodeHtml("</" + $(this).context.localName + ">");
+		var topHtmlTag = $(this).context.localName; // head or body
 		
-		if ($(this).context.localName === "head") {
+		outputHtml += "<br>	" + encodeHtml("<" + topHtmlTag + ">");
+		$(this).children().each(function() {
+			var id = $(this).data("id");
+			var html = removeDataIdInHtml($(this)[0].outerHTML);
+			outputHtml += "<br>		" + encodeHtml(html);
+		});
+		outputHtml += "<br>	" + encodeHtml("</" + topHtmlTag + ">");
+		
+		if (topHtmlTag === "head") {
 			outputHtml += "<br>";
 		}
 	});
@@ -105,18 +231,67 @@ function reInitCode() {
 }
 
 $(document).ready(function() {
-	$(".toggle-sidebar").sideNav();
+	if ($.cookie("html_bones")) {
+		var head = $.cookie("html_bones_head");
+		var body = $.cookie("html_bones_body");
+		$("#code-dom").contents().find("head").html(head);
+		$("#code-dom").contents().find("body").html(body);
+		reInitCode();
+	}
+	else {
+		initCode(encodeHtml($("#code-dom").html()));
+	}
 	
-	$("#btn-select-code").click(function() {
-		$("#code").selectText();	
-	});
+	$(".toggle-sidebar").sideNav();
 	
 	$("#code").dblclick(function() {
 		$(this).selectText();	
 	});
 	
-	$(".version").text($("html").data("version"));
+	$("#btn-reset-code").click(function() {
+		$.removeCookie("html_bones");
+		$.removeCookie("html_bones_head");
+		$.removeCookie("html_bones_body");
+		$.removeCookie("html_bones_ids");
+		
+		$("#code-dom").contents().find("head").empty();
+		$("#code-dom").contents().find("body").empty();
+		$(".tag-checkbox").prop("checked", false);
+		reInitCode();
+	});
 	
-	initCode(encodeHtml($("#code-dom").html()));
+	$("#btn-select-code").click(function() {
+		$("#code").selectText();	
+	});
+	
+	$("#btn-save-as-cookie").click(function() {
+		var cookieHead = $("#code-dom").contents().find("head").html();
+		var cookieBody = $("#code-dom").contents().find("body").html();
+		var ids = new Array();
+		
+		$("#code-dom").contents().find("head, body").children().each(function() {	
+			ids.push($(this).data("id"));
+		});
+		
+		$.cookie("html_bones", "set", {expires: 365});	
+		$.cookie("html_bones_head", cookieHead, {expires: 365});	
+		$.cookie("html_bones_body", cookieBody, {expires: 365});	
+		$.cookie("html_bones_ids", ids, {expires: 365});	
+		
+		if ($.cookie("html_bones")) {
+			var saveCodeBtn = $(this);
+			saveCodeBtn.addClass("green");
+			saveCodeBtn.find("i").removeClass("mdi-content-save");
+			saveCodeBtn.find("i").addClass("mdi-action-done");
+		
+			setTimeout(function() {
+				saveCodeBtn.removeClass("green");
+				saveCodeBtn.find("i").removeClass("mdi-action-done");
+				saveCodeBtn.find("i").addClass("mdi-content-save");
+			}, 3000);
+		}
+	});
+	
+	$(".version").text($("html").data("version"));
 });
 

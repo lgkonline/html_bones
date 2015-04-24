@@ -7,36 +7,106 @@
 			{
 				"id": "hb-utf-8",
 				"title": "UTF-8",
-				"html": "&lt;meta charset=\"UTF-8\" data-id=\"hb-utf-8\"&gt;",
+				"html": "<meta charset=\"UTF-8\">",
 				"section": "head",
 				"position": 1
 			},
 			{
 				"id": "hb-latest-ie",
 				"title": "Latest IE",
-				"html": "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" data-id=\"hb-latest-ie\">",
+				"html": "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">",
 				"section": "head",
 				"position": 2
+			},
+			{
+				"id": "hb-viewport",
+				"title": "Responsive Viewport",
+				"html": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, user-scalable=no\">",
+				"section": "head", 
+				"position": 3
+			},
+			{
+				"id": "hb-title",
+				"title": "Title bar",
+				"html": "<title></title>",
+				"section": "head",
+				"position": 4
+			},
+			{
+				"id": "hb-favicon",
+				"title": "Favicon",
+				"html": "<link rel=\"icon\" type=\"image/png\" href=\"favicon.png\">",
+				"section": "head",
+				"position": 5
 			}
 		]
 	},
 	{
-		"title": "JavaScript",
-		"id": "hb-javascript",
-		"color": "orange",
+		"title": "jQuery",
+		"id": "hb-jquery",
+		"color": "text-darken-3 blue",
 		"tags": [
 			{
-				"id": "hb-jquery",
-				"title": "jQuery",
-				"html": "<script src=\"//code.jquery.com/jquery-1.11.0.min.js\" data-id=\"hb-jquery\"></script>",
+				"id": "hb-jquery-js",
+				"title": "jQuery JS",
+				"html": "<script src=\"//code.jquery.com/jquery-1.11.0.min.js\"></script>",
 				"section": "body",
 				"position": 1
 			}			
 		]
 	},
 	{
-		"title": "CSS",
-		"id": "hb-css",
+		"title": "Bootstrap",
+		"id": "hb-bootstrap",
+		"color": "deep-purple",
+		"tags": [
+			{
+				"id": "hb-bootstrap-css",
+				"title": "Bootstrap CSS",
+				"html": "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css\">",
+				"section": "head",
+				"position": 6
+			},
+			{
+				"id": "hb-bootstrap-theme",
+				"title": "Bootstrap Theme",
+				"html": "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css\">",
+				"section": "head",
+				"position": 7
+			},
+			{
+				"id": "hb-bootstrap-js",
+				"title": "Bootstrap JS",
+				"html": "<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js\"></script>",
+				"section": "body",
+				"position": 2
+			}			
+		]
+	},
+	{
+		"title": "Materialize",
+		"id": "hb-materialize",
+		"color": "text-lighten-2 red",
+		"tags": [
+			{
+				"id": "hb-materialize-css",
+				"title": "Materialize CSS",
+				"html": "<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css\">",
+				"section": "head",
+				"position": 6
+			},
+			{
+				"id": "hb-materialize-js",
+				"title": "Materialize JS",
+				"html": "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js\"></script>",
+				"section": "body",
+				"position": 2
+			}				
+		]
+	},
+	{
+		"title": "Iconsets",
+		"id": "hb-iconsets",
 		"color": "blue",
 		"tags": [
 			{
@@ -44,8 +114,9 @@
 				"title": "Font Awesome",
 				"html": "<link rel=\"stylesheet\" href=\"//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css\">",
 				"section": "head",
-				"position": 4
+				"position": 8
 			}
 		]
 	}
+
 ]
