@@ -57,43 +57,48 @@ function decodeHtml(html) {
 }
 
 function insertDataIdInHtml(html, id) {
-	var htmlSplitted = html.split(" ");
-	if (htmlSplitted.length === 1) {
-		// Wenn Tag keine Attribute enthaelt
-		var otherSplitted = html.split(">");
-		otherSplitted[0] += " data-id=\"" + id + "\"";
-		return otherSplitted.join(">");
+	if (html.indexOf("script") > -1) {
+		var htmlSplitted = html.split(">");
+		
+		for (var i = 0; i < htmlSplitted.length; i++) {
+			var otherSplitted = htmlSplitted[i].split(" ");
+			for (var j = 0; j < otherSplitted.length; j++) {
+				if (otherSplitted[j].indexOf("type") > -1) {
+					otherSplitted[j] = "data-" + otherSplitted[j];	
+				}
+			}
+			if (i === 0) {
+				otherSplitted.push("type=\"application/json\"");
+			}
+			htmlSplitted[i] = otherSplitted.join(" ");
+		}
+		
+		html = htmlSplitted.join(">");
 	}
-	else {
-		htmlSplitted.splice(1, 0, "data-id=\"" + id + "\"");
-	}
-	if (htmlSplitted[0] === "<script") {
-		// Scripts werden durch MIME-Aenderung unbrauchbar gemacht
-		htmlSplitted.splice(1, 0, "type=\"application/json\"");
-	}
-	var htmlUnited = htmlSplitted.join(" ");
-	return htmlUnited;
+	
+	var newHtml;
+	$("#temp").html(html);
+	$("#temp").children().each(function() {
+		$(this).attr("data-id", id);
+		newHtml = $(this)[0].outerHTML;
+	});
+    $("#temp").empty();
+	return newHtml;
 }
 
 function removeDataIdInHtml(html) {
-	var htmlSplitted = html.split(" ");
-	if (htmlSplitted.length === 2) {
-		// Wenn Tag keine Attribute enthaelt
-		var otherSplitted = htmlSplitted[1].split(">");
-		otherSplitted.splice(0, 1);
-		htmlSplitted[1] = otherSplitted.join(">");
-		return htmlSplitted.join(">");
-	}
-	else {
-		htmlSplitted.splice(1, 1);
-	}
-	
-	if (htmlSplitted[0] === "<script") {
-		// MIME-Aenderung wieder entfernen
-		htmlSplitted.splice(1, 1);
-	}
-	var htmlUnited = htmlSplitted.join(" ");
-	return htmlUnited;
+    var newHtml;
+    $("#temp").html(html);
+    $("#temp").find("script").each(function() {
+		$(this).attr("type", $(this).attr("data-type"));
+		$(this).removeAttr("data-type");
+    });
+    $("#temp").find("*[data-id]").each(function() {
+        $(this).removeAttr("data-id");
+        newHtml = $(this)[0].outerHTML;
+    });
+    $("#temp").empty();
+    return newHtml;   
 }
 
 function findPreviousTagsElement(id, section) {
@@ -182,7 +187,7 @@ $.ajax({
 				reInitCode();
 			}
 			else {
-				$("#code-dom").contents().find("*[data-id='" + id + "'").remove();
+				$("#code-dom").contents().find("*[data-id='" + id + "']").remove();
 				reInitCode();
 			}
 		});	
@@ -294,4 +299,3 @@ $(document).ready(function() {
 	
 	$(".version").text($("html").data("version"));
 });
-
