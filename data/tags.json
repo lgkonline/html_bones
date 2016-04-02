@@ -63,21 +63,21 @@
 			{
 				"id": "hb-bootstrap-css",
 				"title": "Bootstrap CSS",
-				"html": "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css\">",
+				"html": "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css\">",
 				"section": "head",
 				"position": 6
 			},
 			{
 				"id": "hb-bootstrap-theme",
 				"title": "Bootstrap Theme",
-				"html": "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css\">",
+				"html": "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css\">",
 				"section": "head",
 				"position": 7
 			},
 			{
 				"id": "hb-bootstrap-js",
 				"title": "Bootstrap JS",
-				"html": "<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js\"></script>",
+				"html": "<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js\"></script>",
 				"section": "body",
 				"position": 2
 			}			
@@ -91,14 +91,14 @@
 			{
 				"id": "hb-materialize-css",
 				"title": "Materialize CSS",
-				"html": "<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css\">",
+				"html": "<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css\">",
 				"section": "head",
 				"position": 6
 			},
 			{
 				"id": "hb-materialize-js",
 				"title": "Materialize JS",
-				"html": "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js\"></script>",
+				"html": "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js\"></script>",
 				"section": "body",
 				"position": 2
 			}				
