@@ -60,6 +60,11 @@ main {
 	.collection {
 		border: none;	
 	}
+
+	&.in {
+		transition: 0.5s;
+		left: 0;
+	}
 }
 
 #code {
@@ -93,4 +98,16 @@ main {
 #toggle-suggest-modal {
 	display: inline-block;
 	padding: 0;
+}
+
+#sidebar-wrapper {
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 2;
+	display: none;
 }

@@ -188,4 +188,9 @@ $(document).ready(function() {
 	});
 	
 	$(".version").text($("html").data("version"));
+
+	$(".toggle-sidebar, #sidebar-wrapper").click(function() {
+		$("#sidebar").toggleClass("in");
+		$("#sidebar-wrapper").toggle();
+	});
 });
