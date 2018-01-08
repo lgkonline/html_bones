@@ -1,123 +1,150 @@
 <!DOCTYPE html>
 <html data-appname="<html_bones>" data-version="2.3" data-lastupdate="2016-07-26">
-	<head>
-		<meta charset="UTF-8">
-        <meta name="author" content="Lars Kliesing - lgk.io" />
-        <meta name="robots" content="index,follow" />  
-        <meta name="description" content="Presents a basic HTML structure. With one click you can add your favorite framework.">
-        <meta name="keywords" content="HTML,bones,structure,grid,template,frameworks">		
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"> 
-		
-		<title>&lt;html_bones&gt;</title>
-		
-		<link rel="icon" type="image/png" href="favicon.png">
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<link rel="stylesheet" href="./lib/materialize/css/materialize.min.css">
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="./style/main.min.css">
-	</head>
 
-	<body>
-	
-		<main>
-			<div id="sidebar-wrapper"></div>
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="Lars Kliesing - lgk.io" />
+	<meta name="robots" content="index,follow" />
+	<meta name="description" content="Presents a basic HTML structure. With one click you can add your favorite framework.">
+	<meta name="keywords" content="HTML,bones,structure,grid,template,frameworks">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-			<div id="sidebar" class="side-nav fixed">
-				<ul id="tag-menu" class="collection">					
-				</ul>	
-				
-				<div class="divider"></div>
-				
-				<p class="center-align">	
-					<a href="http://about.lgkonline.com/kontakt" target="_blank" id="toggle-suggest-modal" 
-					class="btn-floating btn-large waves-effect waves-light red tooltipped modal-trigger" data-position="right" data-tooltip="Suggest an element">
-						<i class="mdi-content-add"></i>
-					</a>
-				</p>
-			</div>
-					
-			<ul id="lgk-dropdown" class="dropdown-content" style="right: 0;">
-				<li><a href="http://startmon.lgk.io" target="_blank" class="tooltipped" data-position="left" data-tooltip="A customizable start page for the web">Startmon</a></li>
-				<li><a href="http://colorganize.com" target="_blank" class="tooltipped" data-position="left" data-tooltip="A web app to store and organize colors for different kinds of projects">colorganize.com</a></li>
-				<li><a href="http://lgk.io/orange_files" target="_blank" class="tooltipped" data-position="left" data-tooltip="A simple CMS to present sharing files in a nice view">orange_files</a></li>
-				<li class="divider"></li>
-				<li><a href="http://blog.lgk.io" target="_blank">LGK Blog</a></li>
-				<li><a href="http://services.lgk.io" target="_blank">LGK Services</a></li>
+	<title>&lt;html_bones&gt;</title>
+
+	<link rel="icon" type="image/png" href="favicon.png">
+	<link rel="stylesheet" href="https://lib.lgkonline.com/pill-menu/style.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="./lib/materialize/css/materialize.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="./style/main.min.css">
+</head>
+
+<body>
+	<div class="lgk-pill">
+		<iframe class="lgk-pill-content" src=""></iframe>
+	</div>
+	<div class="lgk-pill-btn black" style="background-color: transparent !important">
+		<span class="lgk-pill-icon"></span>
+	</div>
+	<div class="lgk-pill-wrapper"></div>
+
+	<main>
+		<div id="sidebar-wrapper"></div>
+
+		<div id="sidebar" class="side-nav fixed">
+			<ul id="tag-menu" class="collection">
 			</ul>
 
-			<nav>
-				<div class="nav-wrapper light-blue">
-					<span class="brand-logo center">&lt;html_bones&gt;</span>
+			<div class="divider"></div>
 
-					<ul class="left hide-on-large-only">
-						<li>
-							<a href="#!" data-activates="sidebar" class="toggle-sidebar">
-								<i class="large mdi-navigation-menu"></i>
-							</a>
-						</li>
-					</ul>
-					
-					<ul class="right">
-						<li>
-							<a href="https://bitbucket.org/lgkonline/html_bones/" target="_blank" class="tooltipped" data-tooltip="Fork <html_bones> on Bitbucket" data-position="left">
-								<i class="fa fa-bitbucket"></i>
-							</a>
-						</li>
-						
-						<li>
-							<a href="http://twitter.com/lgkonline" target="_blank" class="tooltipped" data-tooltip="@lgkonline" data-position="left">
-								<i class="fa fa-twitter"></i>
-							</a>
-						</li>
-						
-						<li>
-							<a class="dropdown-button" href="#!" data-activates="lgk-dropdown">
-								<img src="http://lib.lgkonline.com/logo-fff.png" height="28px" style="vertical-align: middle;">
-							</a>
-						</li>
-					</ul>
-				</div>
-			</nav>
-				
-			<pre id="code" class="prettyprint lang-html"></pre>			
-
-			<div class="container center-align">	
-				<button id="btn-reset-code" type="button" class="hb-btn btn waves-light waves-effect light-blue">
-					<i class="mdi-content-undo left"></i>
-					Reset
-				</button>			
-			
-				<button id="btn-select-code" type="button" class="hb-btn btn waves-light waves-effect light-blue">
-					<i class="mdi-content-select-all left"></i>
-					Select the code
-				</button>				
-			
-				<button id="btn-save-as-cookie" type="button" class="hb-btn btn waves-light waves-effect light-blue">
-					<i class="mdi-content-save left"></i>
-					Save as a cookie
-				</button>
-				
-				<a class="dropdown-button hb-btn btn waves-light waves-effect light-blue" href="#" data-activates="seperator-dropdown">
-					Seperator
-					<span class="caret">▼</span>
+			<p class="center-align">
+				<a href="http://about.lgkonline.com/kontakt" target="_blank" id="toggle-suggest-modal" class="btn-floating btn-large waves-effect waves-light red tooltipped modal-trigger"
+				 data-position="right" data-tooltip="Suggest an element">
+					<i class="mdi-content-add"></i>
 				</a>
-				
-				<ul id="seperator-dropdown" class="dropdown-content">
-					<li><a href="#!" data-value="tabs">Tabs</a></li>
-					<li><a href="#!" data-value="spaces">Spaces</a></li>
-				</ul>					
-				
-				<p class="grey-text">
-					<span>&copy; 2016 LGK</span> - Version <span class="version"></span>
-				</p>
+			</p>
+		</div>
+
+		<ul id="lgk-dropdown" class="dropdown-content" style="right: 0;">
+			<li>
+				<a href="http://startmon.lgk.io" target="_blank" class="tooltipped" data-position="left" data-tooltip="A customizable start page for the web">Startmon</a>
+			</li>
+			<li>
+				<a href="http://colorganize.com" target="_blank" class="tooltipped" data-position="left" data-tooltip="A web app to store and organize colors for different kinds of projects">colorganize.com</a>
+			</li>
+			<li>
+				<a href="http://lgk.io/orange_files" target="_blank" class="tooltipped" data-position="left" data-tooltip="A simple CMS to present sharing files in a nice view">orange_files</a>
+			</li>
+			<li class="divider"></li>
+			<li>
+				<a href="http://blog.lgk.io" target="_blank">LGK Blog</a>
+			</li>
+			<li>
+				<a href="http://services.lgk.io" target="_blank">LGK Services</a>
+			</li>
+		</ul>
+
+		<nav>
+			<div class="nav-wrapper light-blue">
+				<span class="brand-logo center">&lt;html_bones&gt;</span>
+
+				<ul class="left hide-on-large-only">
+					<li>
+						<a href="#!" data-activates="sidebar" class="toggle-sidebar">
+							<i class="large mdi-navigation-menu"></i>
+						</a>
+					</li>
+				</ul>
+
+				<ul class="right">
+					<li>
+						<a href="https://bitbucket.org/lgkonline/html_bones/" target="_blank" class="tooltipped" data-tooltip="Fork <html_bones> on Bitbucket"
+						 data-position="left">
+							<i class="fa fa-bitbucket"></i>
+						</a>
+					</li>
+
+					<li>
+						<a href="http://twitter.com/lgkonline" target="_blank" class="tooltipped" data-tooltip="@lgkonline" data-position="left">
+							<i class="fa fa-twitter"></i>
+						</a>
+					</li>
+
+					<li>
+						<a class="dropdown-button" href="#!" data-activates="lgk-dropdown">
+							<img src="http://lib.lgkonline.com/logo-fff.png" height="28px" style="vertical-align: middle;">
+						</a>
+					</li>
+				</ul>
 			</div>
-		</main>		
-		
-		<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-		<script src="lib/jquery/jquery.cookie.min.js"></script>
-		<script type="text/javascript" src="./lib/prettyprint/prettify.js"></script>
-		<script type="text/javascript" src="./lib/materialize/js/materialize.min.js"></script>
-		<script src="./script/main.min.js"></script>
-	</body>
+		</nav>
+
+		<pre id="code" class="prettyprint lang-html"></pre>
+
+		<div class="container center-align">
+			<button id="btn-reset-code" type="button" class="hb-btn btn waves-light waves-effect light-blue">
+				<i class="mdi-content-undo left"></i>
+				Reset
+			</button>
+
+			<button id="btn-select-code" type="button" class="hb-btn btn waves-light waves-effect light-blue">
+				<i class="mdi-content-select-all left"></i>
+				Select the code
+			</button>
+
+			<button id="btn-save-as-cookie" type="button" class="hb-btn btn waves-light waves-effect light-blue">
+				<i class="mdi-content-save left"></i>
+				Save as a cookie
+			</button>
+
+			<a class="dropdown-button hb-btn btn waves-light waves-effect light-blue" href="#" data-activates="seperator-dropdown">
+				Seperator
+				<span class="caret">▼</span>
+			</a>
+
+			<ul id="seperator-dropdown" class="dropdown-content">
+				<li>
+					<a href="#!" data-value="tabs">Tabs</a>
+				</li>
+				<li>
+					<a href="#!" data-value="spaces">Spaces</a>
+				</li>
+			</ul>
+
+			<p class="grey-text">
+				<span>&copy; 2016 LGK</span> - Version
+				<span class="version"></span>
+			</p>
+		</div>
+	</main>
+
+	<script src="https://lib.lgkonline.com/pill-menu/script.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="lib/jquery/jquery.cookie.min.js"></script>
+	<script type="text/javascript" src="./lib/prettyprint/prettify.js"></script>
+	<script type="text/javascript" src="./lib/materialize/js/materialize.min.js"></script>
+	<script src="./script/main.min.js"></script>
+</body>
+
 </html>
