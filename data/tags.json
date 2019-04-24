@@ -22,7 +22,7 @@
 				"id": "hb-viewport",
 				"title": "Responsive Viewport",
 				"html": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, user-scalable=no\">",
-				"section": "head", 
+				"section": "head",
 				"position": 3
 			},
 			{
@@ -42,6 +42,27 @@
 		]
 	},
 	{
+		"title": "Material Design",
+		"id": "material-io",
+		"color": "text-teal darken-1",
+		"tags": [
+			{
+				"id": "hb-material-io-css",
+				"title": "Components Web CSS",
+				"html": "<link rel=\"stylesheet\" href=\"https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css\">",
+				"section": "head",
+				"position": 9
+			},
+			{
+				"id": "hb-material-io-js",
+				"title": "Components Web JS",
+				"html": "<script src=\"https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js\"></script>",
+				"section": "body",
+				"position": 3
+			}
+		]
+	},
+	{
 		"title": "jQuery",
 		"id": "hb-jquery",
 		"color": "text-darken-3 blue",
@@ -49,73 +70,73 @@
 			{
 				"id": "hb-jquery-3",
 				"title": "jQuery 3.x",
-				"html": "<script src=\"//code.jquery.com/jquery-3.1.0.min.js\" type=\"text/javascript\"></script>",
+				"html": "<script src=\"//code.jquery.com/jquery-3.4.0.min.js\" type=\"text/javascript\"></script>",
 				"section": "body",
 				"position": 1
-			},	
+			},
 			{
 				"id": "hb-jquery-2",
 				"title": "jQuery 2.x",
 				"html": "<script src=\"//code.jquery.com/jquery-2.2.4.min.js\" type=\"text/javascript\"></script>",
 				"section": "body",
 				"position": 1
-			},							
+			},
 			{
 				"id": "hb-jquery-js",
 				"title": "jQuery 1.x",
 				"html": "<script src=\"//code.jquery.com/jquery-1.12.4.min.js\" type=\"text/javascript\"></script>",
 				"section": "body",
 				"position": 1
-			}			
+			}
 		]
 	},
 	{
-		"title": "Bootstrap",
+		"title": "Bootstrap 3",
 		"id": "hb-bootstrap",
 		"color": "deep-purple",
 		"tags": [
 			{
 				"id": "hb-bootstrap-css",
 				"title": "Bootstrap CSS",
-				"html": "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">",
+				"html": "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css\">",
 				"section": "head",
 				"position": 6
 			},
 			{
 				"id": "hb-bootstrap-theme",
 				"title": "Bootstrap Theme",
-				"html": "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css\">",
+				"html": "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css\">",
 				"section": "head",
 				"position": 7
 			},
 			{
 				"id": "hb-bootstrap-js",
 				"title": "Bootstrap JS",
-				"html": "<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>",
+				"html": "<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js\"></script>",
 				"section": "body",
 				"position": 2
-			}			
+			}
 		]
 	},
 	{
-		"title": "Materialize",
+		"title": "Materialize 0",
 		"id": "hb-materialize",
 		"color": "text-lighten-2 red",
 		"tags": [
 			{
 				"id": "hb-materialize-css",
 				"title": "Materialize CSS",
-				"html": "<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css\">",
+				"html": "<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css\">",
 				"section": "head",
 				"position": 6
 			},
 			{
 				"id": "hb-materialize-js",
 				"title": "Materialize JS",
-				"html": "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js\"></script>",
+				"html": "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js\"></script>",
 				"section": "body",
 				"position": 2
-			}				
+			}
 		]
 	},
 	{
@@ -132,5 +153,4 @@
 			}
 		]
 	}
-
 ]
