@@ -47,11 +47,18 @@
 		"color": "text-teal darken-1",
 		"tags": [
 			{
+				"id": "hb-material-io-icons",
+				"title": "Icon Webfont",
+				"html": "<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/icon?family=Material+Icons\">",
+				"section": "head",
+				"position": 9
+			},
+			{
 				"id": "hb-material-io-css",
 				"title": "Components Web CSS",
 				"html": "<link rel=\"stylesheet\" href=\"https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css\">",
 				"section": "head",
-				"position": 9
+				"position": 10
 			},
 			{
 				"id": "hb-material-io-js",
